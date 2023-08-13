@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjlplixsvy4ax"]
+
+[ext_resource type="Texture2D" uid="uid://qalb7exklk5j" path="res://Sprites/Goal.png" id="1_c5y7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgi6o"]
+size = Vector2(30, 30)
+
+[node name="Goal" type="Area2D" groups=["Goal"]]
+collision_layer = 4
+collision_mask = 59
+metadata/_edit_group_ = true
+
+[node name="GoalSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_c5y7o")
+
+[node name="GoalCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pgi6o")

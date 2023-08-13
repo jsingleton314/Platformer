@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cohfib2usnqf4"]
+
+[ext_resource type="PackedScene" uid="uid://db4es00cyyxug" path="res://Scenes/Wall.tscn" id="2_n8sib"]
+[ext_resource type="PackedScene" uid="uid://cjlplixsvy4ax" path="res://Scenes/Goal.tscn" id="3_21h51"]
+
+[node name="Level" type="Node2D"]
+
+[node name="PlayerStart" type="Marker2D" parent="."]
+position = Vector2(600, 350)
+
+[node name="BarrierWalls" type="Node" parent="."]
+
+[node name="TopBarrier" parent="BarrierWalls" instance=ExtResource("2_n8sib")]
+position = Vector2(600, -5)
+scale = Vector2(12.2, 0.1)
+
+[node name="BottomBarrier" parent="BarrierWalls" instance=ExtResource("2_n8sib")]
+position = Vector2(600, 705)
+scale = Vector2(12.2, 0.1)
+
+[node name="RightWall" parent="BarrierWalls" instance=ExtResource("2_n8sib")]
+position = Vector2(-5, 350)
+scale = Vector2(0.1, 7)
+
+[node name="LeftWall" parent="BarrierWalls" instance=ExtResource("2_n8sib")]
+position = Vector2(1205, 350)
+scale = Vector2(0.1, 7)
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Mobs" type="Node" parent="."]
+
+[node name="Goal" parent="." instance=ExtResource("3_21h51")]

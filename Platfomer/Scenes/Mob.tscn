@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs2gbhiwphd4h"]
+
+[ext_resource type="Script" path="res://Scripts/Mob.cs" id="1_esmod"]
+[ext_resource type="Texture2D" uid="uid://2cahnb5dkymn" path="res://Sprites/Enemy.png" id="2_37wne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_710y7"]
+size = Vector2(30, 50)
+
+[sub_resource type="Curve2D" id="Curve2D_nbx38"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -35, 0, 0, 0, 0, 0, 35, 0)
+}
+point_count = 2
+
+[node name="Mob" type="Area2D" groups=["Mob"]]
+collision_layer = 8
+collision_mask = 51
+script = ExtResource("1_esmod")
+
+[node name="MobSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_37wne")
+
+[node name="MobCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_710y7")
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nbx38")
+
+[node name="MobPathFollow" type="PathFollow2D" parent="MobPath"]
+progress = 35.0
+loop = false
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]

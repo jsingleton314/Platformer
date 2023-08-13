@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx0ivqxsgwu5l"]
+
+[ext_resource type="Texture2D" uid="uid://uxn51j3eua2i" path="res://Sprites/Player.png" id="1_g775a"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_n6js6"]
+[ext_resource type="PackedScene" uid="uid://cgkxdugvlnu68" path="res://Scenes/Bullet.tscn" id="2_idv0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neypn"]
+size = Vector2(30, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64vcf"]
+size = Vector2(30, 50)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(2, 1)
+collision_layer = 16
+collision_mask = 15
+platform_floor_layers = 4294901761
+platform_wall_layers = 2
+script = ExtResource("1_n6js6")
+BulletScene = ExtResource("2_idv0y")
+metadata/_edit_group_ = true
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_g775a")
+
+[node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_neypn")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="PlayerHitBox" type="Area2D" parent="." groups=["Player"]]
+scale = Vector2(1.00431, 1)
+collision_layer = 0
+collision_mask = 12
+
+[node name="PlayerHitBoxCollisionShape" type="CollisionShape2D" parent="PlayerHitBox"]
+shape = SubResource("RectangleShape2D_64vcf")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(20, 0)
+
+[connection signal="area_entered" from="PlayerHitBox" to="." method="OnPlayerHitBoxAreaEntered"]

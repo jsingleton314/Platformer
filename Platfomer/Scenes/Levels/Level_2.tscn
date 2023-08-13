@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs85e487d70xb"]
+
+[ext_resource type="PackedScene" uid="uid://cohfib2usnqf4" path="res://Scenes/Levels/Level.tscn" id="1_qvma4"]
+[ext_resource type="PackedScene" uid="uid://db4es00cyyxug" path="res://Scenes/Wall.tscn" id="2_8uln7"]
+[ext_resource type="PackedScene" uid="uid://cs2gbhiwphd4h" path="res://Scenes/Mob.tscn" id="3_huskk"]
+
+[sub_resource type="Curve2D" id="Curve2D_1tdcw"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -85, 0, 0, 0, 0, 0, 85, 0)
+}
+point_count = 2
+
+[node name="Level_2" instance=ExtResource("1_qvma4")]
+
+[node name="PlayerStart" parent="." index="0"]
+position = Vector2(50, 675)
+
+[node name="Wall" parent="Walls" index="0" instance=ExtResource("2_8uln7")]
+position = Vector2(150, 650)
+
+[node name="Wall2" parent="Walls" index="1" instance=ExtResource("2_8uln7")]
+position = Vector2(250, 600)
+scale = Vector2(1, 2)
+
+[node name="Wall3" parent="Walls" index="2" instance=ExtResource("2_8uln7")]
+position = Vector2(1050, 650)
+
+[node name="Wall4" parent="Walls" index="3" instance=ExtResource("2_8uln7")]
+position = Vector2(950, 600)
+scale = Vector2(1, 2)
+
+[node name="Wall5" parent="Walls" index="4" instance=ExtResource("2_8uln7")]
+position = Vector2(450, 550)
+scale = Vector2(1, 3)
+
+[node name="Wall6" parent="Walls" index="5" instance=ExtResource("2_8uln7")]
+position = Vector2(750, 550)
+scale = Vector2(1, 3)
+
+[node name="Wall7" parent="Walls" index="6" instance=ExtResource("2_8uln7")]
+position = Vector2(350, 650)
+
+[node name="Wall8" parent="Walls" index="7" instance=ExtResource("2_8uln7")]
+position = Vector2(850, 650)
+
+[node name="Wall9" parent="Walls" index="8" instance=ExtResource("2_8uln7")]
+position = Vector2(600, 600)
+scale = Vector2(2, 2)
+
+[node name="Mob" parent="Mobs" index="0" instance=ExtResource("3_huskk")]
+position = Vector2(150, 575)
+Speed = 100
+
+[node name="Mob2" parent="Mobs" index="1" instance=ExtResource("3_huskk")]
+position = Vector2(250, 475)
+Speed = 200
+GoesRight = false
+
+[node name="Mob3" parent="Mobs" index="2" instance=ExtResource("3_huskk")]
+position = Vector2(450, 375)
+
+[node name="Mob4" parent="Mobs" index="3" instance=ExtResource("3_huskk")]
+position = Vector2(1050, 575)
+Speed = 100
+
+[node name="Mob5" parent="Mobs" index="4" instance=ExtResource("3_huskk")]
+position = Vector2(950, 475)
+Speed = 200
+GoesRight = false
+
+[node name="Mob6" parent="Mobs" index="5" instance=ExtResource("3_huskk")]
+position = Vector2(750, 375)
+
+[node name="Mob7" parent="Mobs" index="6" instance=ExtResource("3_huskk")]
+position = Vector2(600, 470)
+
+[node name="MobPath" parent="Mobs/Mob7" index="2"]
+curve = SubResource("Curve2D_1tdcw")
+
+[node name="MobPathFollow" parent="Mobs/Mob7/MobPath" index="0"]
+position = Vector2(-50.0113, 0)
+
+[node name="Goal" parent="." index="4"]
+position = Vector2(1150, 685)
+
+[editable path="Mobs/Mob7"]

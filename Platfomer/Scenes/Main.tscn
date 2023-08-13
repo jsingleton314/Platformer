@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://0ic7hsljqp5b"]
+
+[ext_resource type="PackedScene" uid="uid://bx0ivqxsgwu5l" path="res://Scenes/Player.tscn" id="1_7kfju"]
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_7lo63"]
+[ext_resource type="PackedScene" uid="uid://b7uyediufhf3r" path="res://Scenes/Hud.tscn" id="2_86o5e"]
+[ext_resource type="PackedScene" uid="uid://c4nmjco1bb2et" path="res://Scenes/MainMenu.tscn" id="4_2cn5x"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_7lo63")
+PlayerScene = ExtResource("1_7kfju")
+
+[node name="MainMenu" parent="." instance=ExtResource("4_2cn5x")]
+
+[node name="Hud" parent="." instance=ExtResource("2_86o5e")]
+visible = false
+
+[node name="GameOverTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 2.0
+one_shot = true
+
+[node name="GameStartTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="GameOverTimer" to="." method="OnPlayerDiedTimerTimeout"]
+[connection signal="timeout" from="GameStartTimer" to="." method="OnGameStartTimerTimeout"]
